@@ -173,13 +173,18 @@ Use the following commands based on your system type:
 **For Debian-based systems (Ubuntu, Mint, etc.):**
 ```bash
 sudo apt update && sudo apt upgrade
-sudo apt-get install -y ffmpeg python3-pip python3-tk
+sudo apt-get install -y ffmpeg python3-tk
 ```
 
 **For Arch-based systems (EndeavourOS):**
 ```bash
 sudo pacman -Syu
-sudo pacman -S ffmpeg python-pip tk
+sudo pacman -S ffmpeg tk
+```
+
+**Install [uv](https://docs.astral.sh/uv/) (all systems):**
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 ---
@@ -194,18 +199,19 @@ Setting up a virtual environment (venv) ensures that the program's dependencies 
 
 2. **Create a virtual environment:**
    ```bash
-   python3 -m venv venv
+   uv venv --python 3.10
    ```
+   uv downloads Python 3.10 automatically if it is not already installed. Newer Python versions are not supported by the pinned dependencies.
 
 3. **Activate the virtual environment:**
    - For **Debian-based and Arch-based systems:**
      ```bash
-     source venv/bin/activate
+     source .venv/bin/activate
      ```
 
 4. **Install dependencies in the virtual environment:**
    ```bash
-   pip install -r requirements.txt
+   uv pip install -r requirements.txt
    ```
 
 ---
